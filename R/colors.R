@@ -1,0 +1,102 @@
+##############################################
+# Valitsuse stiiliraamatust lähtuv kujundus ggplot2-le
+# 
+# Eeskujusid on olnud mitmeid:
+# 
+# https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
+#
+# https://github.com/r4ecology/ggplot2-theme
+# https://github.com/houseofcommonslibrary/clcharts
+# Nimekirja teemadest leiab:
+# https://github.com/jmcastagnetto/ggplot2_themes_in_github
+# 
+# (c) 2021 Raoul Lättemäe
+##############################################
+
+# Colors
+fpo_colors <- c(
+  `red`        = "#d11141",
+  `green`      = "#00b159",
+  `blue`       = "#56B4E9",
+  `orange`     = "#E69F00",
+  `yellow`     = "#ffc425",
+  `light grey` = "#cccccc",
+  `dark grey`  = "#8c8c8c")
+
+#' Function to extract drsimonj colors as hex codes
+#'
+#' @param ... Character names of fpo_colors 
+#'
+fpo_cols <- function(...) {
+  cols <- c(...)
+  
+  if (is.null(cols))
+    return (fpo_colors)
+  
+  fpo_colors[cols]
+}
+
+fpo_palettes <- list(
+  `main`  = fpo_cols("blue", "orange", "dark grey"),
+  `cool`  = fpo_cols("blue", "dark grey", "green"),
+  `hot`   = fpo_cols("yellow", "orange", "red"),
+  `mixed` = fpo_cols("blue", "green", "yellow", "orange", "red", "dark grey"),
+  `grey`  = fpo_cols("light grey", "dark grey")
+)
+#' Return function to interpolate a drsimonj color palette
+#'
+#' @param palette Character name of palette in fpo_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments to pass to colorRampPalette()
+#'
+fpo_pal <- function(palette = "main", reverse = FALSE, ...) {
+  pal <- fpo_palettes[[palette]]
+  
+  if (reverse) pal <- rev(pal)
+  
+  colorRampPalette(pal, ...)
+}
+
+#' Color scale constructor for drsimonj colors
+#'
+#' @param palette Character name of palette in fpo_palettes
+#' @param discrete Boolean indicating whether color aesthetic is discrete or not
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to discrete_scale() or
+#'            scale_color_gradientn(), used respectively when discrete is TRUE or FALSE
+#'
+scale_color_fpo <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
+  pal <- fpo_pal(palette = palette, reverse = reverse)
+  
+  if (discrete) {
+    discrete_scale("colour", paste0("fpo_", palette), palette = pal, ...)
+  } else {
+    scale_color_gradientn(colours = pal(256), ...)
+  }
+}
+
+#' Fill scale constructor for drsimonj colors
+#'
+#' @param palette Character name of palette in fpo_palettes
+#' @param discrete Boolean indicating whether color aesthetic is discrete or not
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to discrete_scale() or
+#'            scale_fill_gradientn(), used respectively when discrete is TRUE or FALSE
+#'
+scale_fill_fpo <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
+  pal <- fpo_pal(palette = palette, reverse = reverse)
+  
+  if (discrete) {
+    discrete_scale("fill", paste0("fpo_", palette), palette = pal, ...)
+  } else {
+    scale_fill_gradientn(colours = pal(256), ...)
+  }
+}
+
+# Standartne set andmetest
+mtcars2 <- within(mtcars, {
+  vs <- factor(vs, labels = c("V-shaped", "Straight"))
+  am <- factor(am, labels = c("Automatic", "Manual"))
+  cyl  <- factor(cyl)
+  gear <- factor(gear)
+})
