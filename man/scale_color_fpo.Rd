@@ -2,7 +2,7 @@
 % Please edit documentation in R/colors.R
 \name{scale_color_fpo}
 \alias{scale_color_fpo}
-\title{Color scale constructor for drsimonj colors}
+\title{Add Estonian Government theme to ggplot chart}
 \usage{
 scale_color_fpo(palette = "main", discrete = TRUE, reverse = FALSE, ...)
 }
@@ -17,5 +17,14 @@ scale_color_fpo(palette = "main", discrete = TRUE, reverse = FALSE, ...)
 scale_color_gradientn(), used respectively when discrete is TRUE or FALSE}
 }
 \description{
-Color scale constructor for drsimonj colors
+This function allows you to add the Estonian Government theme to your ggplotgraphics.
 }
+\examples{
+line <- ggplot(line_df, aes(x = year, y = lifeExp)) +
+geom_line(colour = "#007f7f", size = 1) +
+geom_hline(yintercept = 0, size = 1, colour="#333333") +
+theme_fpo() + scale_color_fpo()
+Color scale constructor for drsimonj colors
+
+}
+\keyword{scale_color_fpo}

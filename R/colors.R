@@ -1,15 +1,15 @@
 ##############################################
 # Valitsuse stiiliraamatust lähtuv kujundus ggplot2-le
-# 
+#
 # Eeskujusid on olnud mitmeid:
-# 
+#
 # https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
 #
 # https://github.com/r4ecology/ggplot2-theme
 # https://github.com/houseofcommonslibrary/clcharts
 # Nimekirja teemadest leiab:
 # https://github.com/jmcastagnetto/ggplot2_themes_in_github
-# 
+#
 # (c) 2021 Raoul Lättemäe
 ##############################################
 
@@ -25,14 +25,14 @@ fpo_colors <- c(
 
 #' Function to extract drsimonj colors as hex codes
 #'
-#' @param ... Character names of fpo_colors 
+#' @param ... Character names of fpo_colors
 #'
 fpo_cols <- function(...) {
   cols <- c(...)
-  
+
   if (is.null(cols))
     return (fpo_colors)
-  
+
   fpo_colors[cols]
 }
 
@@ -51,12 +51,22 @@ fpo_palettes <- list(
 #'
 fpo_pal <- function(palette = "main", reverse = FALSE, ...) {
   pal <- fpo_palettes[[palette]]
-  
+
   if (reverse) pal <- rev(pal)
-  
+
   colorRampPalette(pal, ...)
 }
 
+#' Add Estonian Government theme to ggplot chart
+#'
+#' This function allows you to add the Estonian Government theme to your ggplotgraphics.
+#' @keywords scale_color_fpo
+#' @export
+#' @examples
+#' line <- ggplot(line_df, aes(x = year, y = lifeExp)) +
+#' geom_line(colour = "#007f7f", size = 1) +
+#' geom_hline(yintercept = 0, size = 1, colour="#333333") +
+#' theme_fpo() + scale_color_fpo()
 #' Color scale constructor for drsimonj colors
 #'
 #' @param palette Character name of palette in fpo_palettes
@@ -67,7 +77,7 @@ fpo_pal <- function(palette = "main", reverse = FALSE, ...) {
 #'
 scale_color_fpo <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
   pal <- fpo_pal(palette = palette, reverse = reverse)
-  
+
   if (discrete) {
     discrete_scale("colour", paste0("fpo_", palette), palette = pal, ...)
   } else {
@@ -75,6 +85,16 @@ scale_color_fpo <- function(palette = "main", discrete = TRUE, reverse = FALSE, 
   }
 }
 
+#' Add Estonian Government theme to ggplot chart
+#'
+#' This function allows you to add the Estonian Government theme to your ggplotgraphics.
+#' @keywords scale_fill_fpo
+#' @export
+#' @examples
+#' line <- ggplot(line_df, aes(x = year, y = lifeExp)) +
+#' geom_line(colour = "#007f7f", size = 1) +
+#' geom_hline(yintercept = 0, size = 1, colour="#333333") +
+#' theme_fpo() + scale_fill_fpo()
 #' Fill scale constructor for drsimonj colors
 #'
 #' @param palette Character name of palette in fpo_palettes
@@ -85,18 +105,10 @@ scale_color_fpo <- function(palette = "main", discrete = TRUE, reverse = FALSE, 
 #'
 scale_fill_fpo <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
   pal <- fpo_pal(palette = palette, reverse = reverse)
-  
+
   if (discrete) {
     discrete_scale("fill", paste0("fpo_", palette), palette = pal, ...)
   } else {
     scale_fill_gradientn(colours = pal(256), ...)
   }
 }
-
-# Standartne set andmetest
-mtcars2 <- within(mtcars, {
-  vs <- factor(vs, labels = c("V-shaped", "Straight"))
-  am <- factor(am, labels = c("Automatic", "Manual"))
-  cyl  <- factor(cyl)
-  gear <- factor(gear)
-})
