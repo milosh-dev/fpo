@@ -1,0 +1,17 @@
+Package: theme_fpo
+Type: Package
+Title: Themes, Colors and Tools for Making Charts in the Estonian Government Style
+Version: 0.1
+Authors@R: 
+    person(
+        given = "Raoul",
+        family = "Lättemäe",
+        role = c("aut", "cre"),
+        email = "raoul@hot.ee")
+Description: The Estonian Government Theme package provides themes, colors, and tools for making 
+    charts in the Estonian Govenrmnent official Style guide style.
+License: BSD_3_clause + file LICENSE
+Encoding: UTF-8
+Imports:
+    ggplot2
+RoxygenNote: 7.1.1
