@@ -1,4 +1,4 @@
-Package: theme_fpo
+Package: fpoplot
 Type: Package
 Title: Themes, Colors and Tools for Making Charts in the Estonian Government Style
 Version: 0.1
@@ -9,7 +9,7 @@ Authors@R:
         role = c("aut", "cre"),
         email = "raoul@hot.ee")
 Author: Raoul Lättemäe [aut, cre],
-Maintainer: Raoul Lättemäe <raoul@hot.ee>, 
+Maintainer: Raoul Lättemäe <raoul@hot.ee>
 Description: The Estonian Government Theme package provides themes, colors, and tools for making 
     charts in the Estonian Govenrmnent official Style guide style.
 License: BSD_3_clause + file LICENSE
