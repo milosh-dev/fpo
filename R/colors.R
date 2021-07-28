@@ -15,11 +15,12 @@
 
 # Colors
 fpo_colors <- c(
-  `red`        = "#d11141",
-  `green`      = "#00b159",
-  `blue`       = "#56B4E9",
-  `orange`     = "#E69F00",
-  `yellow`     = "#ffc425",
+  `red`        = "#3ecfe7",#"#d11141",
+  `green`      = "#a2b969",#"#00b159",
+  `blue`       = "#063951",#"#56B4E9",
+  `orange`     = "#f36f13",#"#E69F00",
+  `yellow`     = "#ebcb38",#"#ffc425",
+  `light blue` = "#0d95bc",#"#ffc425",
   `light grey` = "#cccccc",
   `dark grey`  = "#8c8c8c")
 
@@ -37,10 +38,10 @@ fpo_cols <- function(...) {
 }
 
 fpo_palettes <- list(
-  `main`  = fpo_cols("blue", "orange", "dark grey"),
-  `cool`  = fpo_cols("blue", "dark grey", "green"),
-  `hot`   = fpo_cols("yellow", "orange", "red"),
-  `mixed` = fpo_cols("blue", "green", "yellow", "orange", "red", "dark grey"),
+  `main`  = fpo_cols("blue", "red", "light blue", "orange", "green", "yellow"),
+  `cool`  = fpo_cols("blue", "light blue", "dark grey", "light grey", "green"),
+  `hot`   = fpo_cols("red", "orange", "yellow", "green"),
+  `mixed` = fpo_cols("blue", "light blue", "green", "yellow", "orange", "red", "dark grey"),
   `grey`  = fpo_cols("light grey", "dark grey")
 )
 #' Return function to interpolate a drsimonj color palette
