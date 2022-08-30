@@ -38,7 +38,8 @@ fpo_cols <- function(...) {
 }
 
 fpo_palettes <- list(
-  `main`  = fpo_cols("blue", "red", "light blue", "orange", "green", "yellow"),
+#  `main`  = fpo_cols("blue", "red", "light blue", "orange", "green", "yellow"),
+  `main`  = fpo_cols("blue", "light blue", "yellow", "green", "red", "orange"),
   `cool`  = fpo_cols("blue", "light blue", "dark grey", "light grey", "green"),
   `hot`   = fpo_cols("red", "orange", "yellow", "green"),
   `mixed` = fpo_cols("blue", "light blue", "green", "yellow", "orange", "red", "dark grey"),

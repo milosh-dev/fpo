@@ -1,12 +1,12 @@
 ##############################################
 # Valitsuse stiiliraamatust lähtuv kujundus ggplot2-le
-# 
+#
 # Eeskujusid on olnud mitmeid:
 # https://github.com/r4ecology/ggplot2-theme
 # https://github.com/houseofcommonslibrary/clcharts
 # Nimekirja teemadest leiab:
 # https://github.com/jmcastagnetto/ggplot2_themes_in_github
-# 
+#
 # (c) 2021 Raoul Lättemäe
 ##############################################
 
@@ -22,28 +22,28 @@
 #' theme_fpo() + scale_color_fpo()
 
 theme_fpo <- function(
-  base_size = 14, 
-  base_family = "Roboto Condensed", 
-  lines_lwd = 0.50, 
-  plot_grid = TRUE, 
-  axis_font = base_family, 
-  title_size = base_size*1.5, 
+  base_size = 14,
+  base_family = "Roboto Condensed",
+  lines_lwd = 0.50,
+  plot_grid = TRUE,
+  axis_font = base_family,
+  title_size = base_size*1.5,
   legend_size = base_size,
   bg_col = "white",
-  title_font = base_family, 
+  title_font = base_family,
   title_col = "#006db5",
-  base_col  = "black", 
+  base_col  = "black",
   axis_lines = TRUE,
-  minor_grid = ifelse(plot_grid, TRUE, FALSE), 
-  vert_grid = ifelse(plot_grid, TRUE, FALSE), 
-  ticks_type = "outer", 
-  horz_grid = ifelse(plot_grid, TRUE, FALSE), 
+  minor_grid = ifelse(plot_grid, TRUE, FALSE),
+  vert_grid = ifelse(plot_grid, TRUE, FALSE),
+  ticks_type = "outer",
+  horz_grid = ifelse(plot_grid, TRUE, FALSE),
   alpha_leg = 0.1, bord_size = 0,
-  legend_bg = "white", 
-  strip_bg = "white", 
+  legend_bg = "white",
+  strip_bg = "white",
   grid_thick = 1,
-  grid_type = "solid", 
-  ticks_xy  = "xy", 
+  grid_type = "solid",
+  ticks_xy  = "xy",
   grid_cols = c("#dad5d1", "#f2ede9")){
   theme_bw()+
     ggplot2::theme(
